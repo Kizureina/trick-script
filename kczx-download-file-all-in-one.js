@@ -1,21 +1,3 @@
-// treeInfo[0].childInfo[0].info.chapter_describe
-
-const fileDownloadUrl = "";
-
-for (let index = 0; index < treeInfo.length; index++) {
-    const childInfo = treeInfo[index].childInfo;
-    for (let j = 0; j < childInfo.length; j++) {
-        const chapter_describe = childInfo[j].info.chapter_describe;
-        console.log(chapter_describe);
-        getUrl(chapter_describe, function (result) {
-            console.log("获取到的字符串为：" + result);
-            fileDownloadUrl = result;
-        });
-
-        downloadFile(fileDownloadUrl);
-    }
-}
-
 function getUrl(contentId, callback) {
     var xhr = new XMLHttpRequest();
     var url = 'https://kczx.cuit.edu.cn/learn/v1/course/file/info';
@@ -70,3 +52,23 @@ function downloadFile(fileUrl) {
 
     xhr.send();
 }
+// treeInfo[0].childInfo[0].info.chapter_describe
+
+const fileDownloadUrl = "";
+
+for (let index = 0; index < treeInfo.length; index++) {
+    const childInfo = treeInfo[index].childInfo;
+    for (let j = 0; j < childInfo.length; j++) {
+        const chapter_describe = childInfo[j].info.chapter_describe;
+        console.log(chapter_describe);
+        getUrl(chapter_describe, function (result) {
+            console.log("获取到的字符串为：" + result);
+            fileDownloadUrl = result;
+    
+            // 下载文件
+            downloadFile(fileDownloadUrl);
+        });
+    }
+}
+
+
